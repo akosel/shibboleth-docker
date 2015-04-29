@@ -138,7 +138,7 @@
                 <!-- Session diagnostic service. -->
                 <Handler type="Session" Location="/session" showAttributeValues="true"/>
 
-                <!-- Since we have an SSL-stripping proxy, Shibboleth thinks it is running on http instead of https -->
+                <!-- Change the ACS URL -->
                 <md:AssertionConsumerService Location="/acs"
                                              index="1" isDefault="true"
                                              Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" />

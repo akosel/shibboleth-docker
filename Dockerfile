@@ -19,7 +19,10 @@ COPY shibboleth /etc/shibboleth
 # Build and install nginx
 ADD ./build-nginx.sh /tmp/build-nginx.sh
 RUN /bin/bash /tmp/build-nginx.sh
+
+# Copy nginx config files
 COPY nginx/conf.d/ /etc/nginx/conf.d/
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
 
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
