@@ -18,8 +18,7 @@ COPY shibboleth /etc/shibboleth
 
 # Build and install nginx
 ADD ./build-nginx.sh /tmp/build-nginx.sh
-RUN /tmp/build-nginx.sh
-ADD nginx/nginx.conf /etc/nginx/nginx.conf
+RUN /bin/bash /tmp/build-nginx.sh
 COPY nginx/conf.d/ /etc/nginx/conf.d/
 
 # forward request and error logs to docker log collector
