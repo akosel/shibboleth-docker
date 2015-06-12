@@ -36,6 +36,7 @@ pushd /tmp
             --user=_shibd \
             --group=_shibd \
             --with-http_ssl_module \
+            --with-http_spdy_module \
             --with-http_realip_module \
             --with-pcre \
             --with-http_auth_request_module \
