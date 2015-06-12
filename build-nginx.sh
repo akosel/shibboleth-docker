@@ -2,7 +2,7 @@
 
 set -x
 
-DEFAULT_VERSION="1.7.2"
+DEFAULT_VERSION="1.8.0"
 dep_version=${VERSION:-$DEFAULT_VERSION}
 dep_dirname=nginx-${dep_version}
 dep_archive_name=${dep_dirname}.tar.gz
