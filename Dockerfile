@@ -9,9 +9,8 @@ RUN echo "deb http://http.debian.net/debian wheezy-backports main" >> /etc/apt/s
         libshibsp-plugins shibboleth-sp2-common shibboleth-sp2-utils supervisor procps curl git && \
     apt-get install -y build-essential libpcre3 libpcre3-dev libpcrecpp0 libssl-dev zlib1g-dev
 
-# Add supervisor config files
-ADD supervisor/shibboleth.conf /etc/supervisor/conf.d/shibboleth.conf
-ADD supervisor/nginx.conf /etc/supervisor/conf.d/nginx.conf
+# Copy supervisor config files
+COPY supervisor /etc/supervisor
 
 # Copy shibboleth config directory
 COPY shibboleth /etc/shibboleth
@@ -21,8 +20,7 @@ ADD ./build-nginx.sh /tmp/build-nginx.sh
 RUN /bin/bash /tmp/build-nginx.sh
 
 # Copy nginx config files
-COPY nginx/conf.d/ /etc/nginx/conf.d/
-COPY nginx/nginx.conf /etc/nginx/nginx.conf
+COPY nginx /etc/nginx
 
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log

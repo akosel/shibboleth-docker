@@ -2,7 +2,7 @@
 
 set -x
 
-DEFAULT_VERSION="1.7.2"
+DEFAULT_VERSION="1.8.0"
 dep_version=${VERSION:-$DEFAULT_VERSION}
 dep_dirname=nginx-${dep_version}
 dep_archive_name=${dep_dirname}.tar.gz
@@ -35,10 +35,10 @@ pushd /tmp
             --http-scgi-temp-path=/var/cache/nginx/scgi_temp \
             --user=_shibd \
             --group=_shibd \
+            --with-http_ssl_module \
             --with-http_realip_module \
             --with-pcre \
             --with-http_auth_request_module \
-            --with-http_realip_module \
             --with-http_stub_status_module \
             --add-module=../headers-more-nginx-module-0.26 \
             --add-module=../nginx-http-shibboleth
