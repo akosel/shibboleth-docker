@@ -35,6 +35,7 @@ pushd /tmp
             --http-scgi-temp-path=/var/cache/nginx/scgi_temp \
             --user=_shibd \
             --group=_shibd \
+            --with-debug \
             --with-http_ssl_module \
             --with-http_spdy_module \
             --with-http_realip_module \
