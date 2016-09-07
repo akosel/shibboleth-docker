@@ -22,6 +22,9 @@ RUN /bin/bash /tmp/build-nginx.sh
 # Copy nginx config files
 COPY nginx /etc/nginx
 
+# Copy certs over
+COPY ssl /etc/ssl
+
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
@@ -40,7 +43,7 @@ RUN curl -sLo /usr/local/bin/ep https://github.com/kreuzwerker/envplate/releases
 
 VOLUME ["/var/cache/nginx"]
 
-EXPOSE 80 9090
+EXPOSE 443
 
 CMD ["/usr/local/bin/ep", "-v", "/etc/nginx/conf.d/default.conf", "/etc/shibboleth/shibboleth2.xml", "--", "/usr/bin/supervisord", "--nodaemon", "--configuration", "/etc/supervisor/supervisord.conf"]
 

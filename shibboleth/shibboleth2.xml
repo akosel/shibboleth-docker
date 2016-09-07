@@ -42,9 +42,9 @@
         security of your site. Stealing sessions via cookie theft is much easier with this disabled.
         -->
         <Sessions lifetime="28800" timeout="3600" relayState="ss:mem"
-                  handlerSSL="false"
+                  handlerSSL="true"
                   checkAddress="false"
-                  cookieProps="http">
+                  cookieProps="https">
 
             <!--
             Configures SSO for a default IdP. To allow for >1 IdP, remove
@@ -125,9 +125,7 @@
                       cookieProps="http">
 
                 <!-- DEFAULT to OpenIdP -->
-                <SSO entityID="https://openidp.feide.no">
-                    SAML2 SAML1
-                </SSO>
+                <SSO entityID="https://idp.testshib.org/idp/shibboleth">SAML2 SAML1</SSO>
 
                 <!-- Extension service that generates "approximate" metadata based on SP configuration. -->
                 <Handler type="MetadataGenerator" Location="/metadata" signing="false"/>
@@ -136,13 +134,13 @@
                 <Handler type="Status" Location="/status" />
 
                 <!-- Session diagnostic service. -->
-                <Handler type="Session" Location="/session" showAttributeValues="true"/>
+                <Handler type="Session" Location="/session" showAttributeValues="true" contentType="application/json"/>
 
                 <!-- Change the ACS URL -->
-                <md:AssertionConsumerService Location="/acs"
-                                             index="1" isDefault="true"
-                                             Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" />
-
+                <md:AssertionConsumerService Location="/acs" index="1"
+                    Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"/>
+                <md:AssertionConsumerService Location="/acs" index="2"
+                    Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign"/>
             </Sessions>
         </ApplicationOverride>
 

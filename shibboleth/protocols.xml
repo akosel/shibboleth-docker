@@ -4,8 +4,8 @@
   <Protocol id="SAML2">
     <Service id="SSO">
       <Initiator id="SAML2" />
-      <Binding id="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" path="/SAML2/POST" />
-      <Binding id="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign" path="/SAML2/POST-SimpleSign" />
+      <Binding id="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" path="/acs" />
+      <Binding id="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign" path="/acs" />
       <Binding id="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact" path="/SAML2/Artifact" />
       <Binding id="urn:oasis:names:tc:SAML:2.0:bindings:PAOS" path="/SAML2/ECP" />
     </Service>
@@ -31,7 +31,7 @@
   <Protocol id="SAML1">
     <Service id="SSO">
       <Initiator id="Shib1" />
-      <Binding id="urn:oasis:names:tc:SAML:1.0:profiles:browser-post" path="/SAML/POST" />
+      <Binding id="urn:oasis:names:tc:SAML:1.0:profiles:browser-post" path="/acs" />
       <Binding id="urn:oasis:names:tc:SAML:1.0:profiles:artifact-01" path="/SAML/Artifact" />
     </Service>
   </Protocol>
