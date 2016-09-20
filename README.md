@@ -22,12 +22,12 @@ This docker image contains a working Shibboleth + nginx FastCGI configuration.
 
 ## Run the container with environment variables
 
-You will need to have port 80 available.
+You will need to have port 443 available.
 
 This runs the container in the foreground, which can be useful for debugging
 
 ````
-docker run --rm -p 80:80 \
+docker run --rm -p 443:443 \
     -v $(pwd)/log:/var/log \
     -e CLIENT_APP_SCHEME=https \
     -e CLIENT_APP_HOSTNAME=your-app.localdomain.com \
@@ -105,7 +105,7 @@ docker build -t matter/shibboleth-nginx .
 With log directory mounted and some example environment variables
 
 ````
-docker run -p 80:80 \
+docker run -p 443:443 \
     -v $(pwd)/log:/var/log \
     -e CLIENT_APP_HOSTNAME=your-app.localdomain.com \
     -e NGINX_PROXY_DESTINATION=http://172.17.42.1:8001 \
@@ -117,7 +117,7 @@ docker run -p 80:80 \
 Also mount lots of directories. This allows you to override the default configuration files and templates.
 
 ````
-docker run -p 80:80 -it \
+docker run -p 443:443 -it \
     -v $(pwd)/shibboleth:/etc/shibboleth \
     -v $(pwd)/supervisor:/etc/supervisor/conf.d \
     -v $(pwd)/nginx/conf.d:/etc/nginx/conf.d \
