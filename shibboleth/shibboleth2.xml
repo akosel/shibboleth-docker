@@ -128,13 +128,16 @@
                 <SSO entityID="https://idp.testshib.org/idp/shibboleth">SAML2 SAML1</SSO>
 
                 <!-- Extension service that generates "approximate" metadata based on SP configuration. -->
-                <Handler type="MetadataGenerator" Location="/metadata" signing="false"/>
+                <Handler type="MetadataGenerator" Location="/Metadata" signing="false"/>
 
                 <!-- Status reporting service. -->
-                <Handler type="Status" Location="/status" />
+                <Handler type="Status" Location="/Status" />
 
                 <!-- Session diagnostic service. -->
-                <Handler type="Session" Location="/session" showAttributeValues="true" contentType="application/json"/>
+                <Handler type="Session" Location="/Session" showAttributeValues="true" contentType="application/json"/>
+
+                <!-- JSON feed of discovery information. -->
+                <Handler type="DiscoveryFeed" Location="/DiscoFeed"/>
 
                 <!-- Change the ACS URL -->
                 <md:AssertionConsumerService Location="/acs" index="1"

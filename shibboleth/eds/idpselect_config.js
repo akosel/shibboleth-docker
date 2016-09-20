@@ -5,12 +5,12 @@ function IdPSelectUIParms(){
     // Adjust the following to fit into your local configuration
     //
     this.alwaysShow = true;          // If true, this will show results as soon as you start typing
-    this.dataSource = '/saml/discoFeed';    // Where to get the data from
+    this.dataSource = '${SHIBBOLETH_RESPONDER_PATH:-/saml}/DiscoFeed';    // Where to get the data from
     this.defaultLanguage = 'en';     // Language to use if the browser local doesnt have a bundle
     this.defaultLogo = '/static/images/internet2shibboleth_nologo.png';
     this.defaultLogoWidth = 90;
     this.defaultLogoHeight = 80 ;
-    this.defaultReturn = "https://local.deepfield.net/saml/Login?target=https://local.deepfield.net";
+    this.defaultReturn = "${CLIENT_APP_SCHEME:-https}://${CLIENT_APP_HOSTNAME:-your-app.localdomain.com}${SHIBBOLETH_RESPONDER_PATH:-/saml}/Login?target=${CLIENT_APP_SCHEME:-https}://${CLIENT_APP_HOSTNAME:-your-app.localdomain.com}";
     this.defaultReturnIDParam = null;
     this.helpURL = 'https://wiki.shibboleth.net/confluence/display/SHIB2/DSRoadmap';
     this.ie6Hack = null;             // An array of structures to disable when drawing the pull down (needed to 
