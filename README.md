@@ -1,3 +1,4 @@
+Originally forked from https://bitbucket.org/hellomatter/shibboleth-nginx
 
 # Overview
 
